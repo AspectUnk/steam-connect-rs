@@ -26,6 +26,7 @@ pub struct Redirect {
 }
 
 impl Redirect {
+    // Create a link to the authorization page with the callback page
     pub fn new(callback: &str) -> Result<Self, Error> {
         let url = Url::parse(callback).map_err(Error::ParseUrl)?;
 
@@ -48,6 +49,7 @@ impl Redirect {
     }
 
     #[cfg(feature = "actix")]
+    // Ready HttpResponse with redirection to authorization page
     pub fn redirect(&self) -> HttpResponse {
         HttpResponse::TemporaryRedirect()
             .append_header((http::header::LOCATION, self.url.to_string()))

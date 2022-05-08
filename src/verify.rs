@@ -110,6 +110,7 @@ impl Verify {
         Ok(is_valid)
     }
 
+    // Checks query string for validity and retrieves SteamID64. Call this function in the handler on the callback page
     pub async fn verify_request(query_string: &str) -> Result<Self, Error> {
         let mut data = serde_qs::from_str::<LoginData>(query_string).map_err(Error::Deserialize)?;
         data.mode = "check_authentication".to_owned();
@@ -126,6 +127,7 @@ impl Verify {
     }
 
     #[cfg(feature = "summaries")]
+    // Query the Steam API to get a player profile
     pub async fn get_summaries(&self, apikey: &str) -> Result<PlayerSummaries, Error> {
         let steamid = self.claimed_id.to_string();
 
@@ -149,6 +151,7 @@ impl Verify {
         Ok(player.clone())
     }
 
+    // SteamID64
     pub fn claim_id(&self) -> u64 {
         self.claimed_id
     }
