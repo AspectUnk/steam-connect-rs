@@ -21,4 +21,4 @@ verify.claim_id(); // Get SteamID64 of an authorized user
 verify.get_summaries();
 ```
 
-You can study an [example project](https://github.com/AspectUnk/steam-connect/blob/master/examples/actix.rs) using actix_web
+You can study an [example project](https://github.com/AspectUnk/steam-connect-rs/blob/main/examples/actix.rs) using actix_web
