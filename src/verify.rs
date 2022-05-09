@@ -1,3 +1,4 @@
+use regex::Regex;
 use url::Url;
 
 use crate::Error;
@@ -30,16 +31,19 @@ struct LoginData {
 
 impl LoginData {
     pub fn claim_id(&self) -> Result<u64, Error> {
-        let claimed_url =
-            Url::parse(&self.claimed_id).map_err(|e| Error::ParseSteamID(e.to_string()))?;
-        let mut url_segments = claimed_url
-            .path_segments()
-            .ok_or(Error::ParseSteamID("Invalid claimed url".to_owned()))?;
-        let id_segment = url_segments
-            .next_back()
-            .ok_or(Error::ParseSteamID("Claim not found".to_owned()))?;
+        lazy_static! {
+            static ref RE_STEAM_ID64: Regex =
+                Regex::new("^(http|https)://steamcommunity.com/openid/id/([0-9]{17}$)").unwrap();
+        }
 
-        id_segment
+        RE_STEAM_ID64
+            .captures(self.claimed_id.as_str())
+            .ok_or(Error::ParseSteamID("Invalid claimed url".to_owned()))?
+            .get(2)
+            .ok_or(Error::ParseSteamID(
+                "Failed to retrieve SteamID64".to_owned(),
+            ))?
+            .as_str()
             .parse::<u64>()
             .map_err(|e| Error::ParseSteamID(e.to_string()))
     }

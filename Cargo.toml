@@ -2,7 +2,7 @@
 name = "steam-connect"
 description = "Implementation Steam web authorization for simple use in projects with or without actix_web"
 authors = ["AspectUnk <aspectunk@gmail.com>"]
-version = "0.1.4"
+version = "0.2.0"
 edition = "2021"
 readme = "README.md"
 license = "MIT"
@@ -30,7 +30,10 @@ serde = { version = "1.0.137", features = ["derive"] }
 serde_qs = "0.9.2"
 
 url = "2.2.2"
+regex = "1.5.5"
+lazy_static = "1.4.0"
 reqwest = { version = "0.11.10", features = ["json", "rustls"] }
+
 actix-web = { version = "4.0.1", optional = true }
 
 [[example]]
