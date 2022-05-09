@@ -126,8 +126,9 @@ impl Verify {
         Ok(verify)
     }
 
-    #[cfg(feature = "summaries")]
     /// Query the Steam API to get a player profile
+    #[cfg(feature = "summaries")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "summaries")))]
     pub async fn get_summaries(&self, apikey: &str) -> Result<PlayerSummaries, Error> {
         let steamid = self.claimed_id.to_string();
 

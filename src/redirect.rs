@@ -48,8 +48,8 @@ impl Redirect {
         Ok(Self { url: auth_url })
     }
 
-    #[cfg(feature = "actix")]
     /// Ready HttpResponse with redirection to authorization page
+    #[cfg(feature = "actix")]
     pub fn redirect(&self) -> HttpResponse {
         HttpResponse::TemporaryRedirect()
             .append_header((http::header::LOCATION, self.url.to_string()))

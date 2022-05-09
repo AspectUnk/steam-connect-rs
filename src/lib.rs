@@ -42,6 +42,7 @@ pub enum Error {
     /// Error getting a SteamID64
     ParseSteamID(String),
     #[cfg(feature = "summaries")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "summaries")))]
     /// Error getting a player profile
     GetSummaries(String),
 }
