@@ -1,5 +1,4 @@
 use regex::Regex;
-use url::Url;
 
 use crate::Error;
 
