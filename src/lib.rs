@@ -16,7 +16,6 @@
 //!
 //! verify.claim_id(); // Get SteamID64 of an authorized user
 //!
-//! // Only available in summaries feature.
 //! // Queries the steam api for more information about the profile.
 //! verify.get_summaries();
 //! ```
