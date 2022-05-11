@@ -2,7 +2,7 @@
 name = "steam-connect"
 description = "Implementation Steam web authorization for simple use in projects with or without actix_web"
 authors = ["AspectUnk <aspectunk@gmail.com>"]
-version = "0.2.1"
+version = "1.0.0"
 edition = "2021"
 readme = "README.md"
 license = "MIT"
@@ -19,7 +19,6 @@ all-features = true
 [features]
 default = ["actix"]
 actix = ["actix-web"]
-summaries = []
 
 [dev-dependencies]
 env_logger = "0.9.0"
