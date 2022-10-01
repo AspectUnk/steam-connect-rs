@@ -61,11 +61,14 @@ pub struct PlayerSummaries {
     pub avatarmedium: String,
     pub avatarfull: String,
     pub avatarhash: String,
-    pub lastlogoff: u64,
+    pub lastlogoff: Option<u64>,
     pub personastate: u32,
     pub primaryclanid: String,
     pub timecreated: u64,
     pub personastateflags: u32,
+    pub loccountrycode: Option<String>,
+    pub locstatecode: Option<String>,
+    pub loccityid: Option<u64>,
 }
 
 #[derive(Deserialize)]
